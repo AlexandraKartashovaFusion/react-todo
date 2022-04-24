@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { IItem } from '../../../common/interfaces';
 import Item from './Item';
-import CustomizedListItem from './AddItemForm.style';
+import CustomizedListItem from './ItemList.style';
 
 interface ItemListProps {
   items: IItem[];

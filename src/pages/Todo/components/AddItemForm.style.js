@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 export default styled(ListItem)`
     background-color: #7D9093;
     border-radius: 10px;
-    height: 12vh !important;
+    height: 12vh;
     display: flex;
     justify-content: center;
 
@@ -13,7 +13,7 @@ export default styled(ListItem)`
       display: flex;
     }
 
-    .textField {
+    .text-field {
       color: white;
       width: 30vw;
     }

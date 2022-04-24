@@ -24,7 +24,7 @@ const AddItemForm: FC<AddItemFormProps> = (props) => {
     <CustomizedListItem disablePadding>
       <form className="form" onSubmit={handleSubmit}>
         <TextField
-          className="textField"
+          className="text-field"
           id="outlined-basic"
           label="Outlined"
           variant="outlined"

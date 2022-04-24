@@ -1,16 +1,13 @@
 import React, { FC } from 'react';
 import Button from '@mui/material/Button';
 
-import CustomizedListItem from './AddItemForm.style';
+import CustomizedListItem from './Item.style';
 import { StatusesEnum } from '../../../common/common.enums';
 import { IItem } from '../../../common/interfaces';
 
 
 interface ItemProps {
   item: IItem;
-  // text: string;
-  // id: string;
-  // status: string;
   deleteItem: (id: string) => void;
   changeStatusItem: (id: string) => void;
 }
@@ -24,8 +21,8 @@ const Item: FC<ItemProps> = (props) => {
   }
 
   return (
-    <CustomizedListItem disablePadding>
-      <p className={props.item.status === StatusesEnum.ACTIVE ? "textBolt" : "text"}>
+    <CustomizedListItem>
+      <p className={props.item.status === StatusesEnum.ACTIVE ? "text-bolt" : "text"}>
         {props.item.value}
       </p>
       <div className="actions">

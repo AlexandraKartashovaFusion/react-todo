@@ -1,13 +1,11 @@
 
 import styled from '@emotion/styled';
-import ListItem from '@mui/material/ListItem';
 
-export default styled(ListItem)`
+export default styled.div`
   background-color: #A1A18A;
   border-radius: 5px;
-  margin-left: 34px;
-  height: 6vh;
-  width: 46vw;
+  margin-left: 25px;
+  margin-right: 25px;
   height: 5vh;
   display: flex;
   justify-content: space-between;
@@ -16,21 +14,23 @@ export default styled(ListItem)`
   margin-top: 10px;
 
   .buttons {
+    height: 4vh;
     width: 8vw;
-    margin-left: 10px !important;
+    margin-left: 10px;
   }
 
   .text {
     text-decoration: line-through;
   }
 
-  .textBolt {
+  .text-bolt {
     font-weight: 700;
   }
 
   .actions {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 15vw;
   }
 `;

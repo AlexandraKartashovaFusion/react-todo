@@ -1,40 +1,15 @@
 import styled from '@emotion/styled';
 
 export default styled.div`
-  background-color: #7D9093;
-  overflow-y: auto;
-  height: 70vh;
-  max-height: 70vh;
-  margin-top: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-  padding-bottom: 20px;
+    background-color: #7D9093;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto;
+    height: 100%;
+    max-height: 70vh;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-top: 10px !important;
 `;
-
-
-
-// .itemsList {
-//   background-color: #7D9093;
-//   overflow-y: auto;
-//   height: 70vh;
-//   max-height: 70vh;
-//   margin-top: 20px;
-//   border-radius: 10px;
-//   display: flex;
-//   flex-direction: column;
-//   padding-top: 10px;
-//   padding-bottom: 20px;
-// }
-
-
-
-/* изменить стили
-поменять структуру
-типизация статус
-убрать лишние файлы
-наименование стилей имя-стиля-через-дифис
-
-добавить фильтрацию
-попробовать подключить ванильный редакс */
