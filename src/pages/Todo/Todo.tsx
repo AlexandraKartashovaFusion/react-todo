@@ -1,16 +1,38 @@
-import React, { FC, useState } from 'react';
-import { StatusesEnum } from '../../common/common.enums';
+import React, { FC, useState, useMemo } from 'react';
+import { FilterEnum, StatusesEnum } from '../../common/common.enums';
 import { IItem } from '../../common/interfaces';
 import { nanoid } from 'nanoid'
 import AddItemForm from './components/AddItemForm';
 import ItemList from './components/ItemList';
 import CustomizedList from './Todo.style';
+import ActionButtons from './components/ActionButtons';
 
 
 const SIZE = 8;
 
 const Todo: FC = () => {
   const [items, setItems] = useState<IItem[]>([]);
+  const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ALL);
+
+  const { filteredItems } = useMemo(() => {
+    let activeItemsCount = 0;
+    const filteredItems = items.filter((item) => {
+      if (item.status === 'active') {
+        ++activeItemsCount;
+      }
+      if (filter === 'all') {
+        return true;
+      }
+
+      return item.status === filter as string;
+    })
+
+    return {
+      filteredItems,
+      activeItemsCount,
+      finishedItemsCount: items.length - activeItemsCount,
+    };
+  }, [filter, items]);
 
   const addItem = (value: string) => {
     const newItem = {
@@ -23,12 +45,12 @@ const Todo: FC = () => {
     setItems(sortedItems)
   }
 
-  const deleteItem = (id: string) => {
+  const onDeleteItem = (id: string) => {
     const returnedItems = items.filter((item) => item.id !== id);
     setItems(returnedItems);
   }
 
-  const changeStatusItem = (id: string) => {
+  const onChangeStatusItem = (id: string) => {
     const mappedItems = items.map((item) => {
       if (item.id === id) {
         item.status === StatusesEnum.ACTIVE
@@ -47,13 +69,20 @@ const Todo: FC = () => {
       .sort((a, b) => a.status === StatusesEnum.DONE ? 1 : -1);
   }
 
+  const onChangeFilter = (filter: FilterEnum) => {
+    setFilter(filter);
+  }
+
   return (
     <CustomizedList>
-      <AddItemForm addNewItem={addItem} />
+      <AddItemForm onAddNewItem={addItem} />
+      <ActionButtons
+        filter={filter}
+        onChangeFilter={onChangeFilter} />
       <ItemList
-        items={items}
-        deleteItem={deleteItem}
-        changeStatusItem={changeStatusItem}
+        items={filteredItems}
+        onDeleteItem={onDeleteItem}
+        onChangeStatusItem={onChangeStatusItem}
       />
     </CustomizedList>
   );
