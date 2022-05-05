@@ -1,15 +1,15 @@
 {
   "usesTypeScript": true,
-  "usesCssModule": true,
-  "cssPreprocessor": "css",
+  "usesCssModule": false,
   "testLibrary": "None",
   "component": {
     "default": {
-      "path": "src/components",
-      "withStyle": true,
+      "path": "src/pages/Todo",
+      "withStyle": false,
       "withTest": false,
       "withStory": false,
       "withLazy": false
     }
-  }
+  },
+  "cssPreprocessor": "css"
 }
