@@ -8,16 +8,16 @@ import { IItem } from '../../../common/interfaces';
 
 interface ItemProps {
   item: IItem;
-  deleteItem: (id: string) => void;
-  changeStatusItem: (id: string) => void;
+  onDeleteItem: (id: string) => void;
+  onChangeStatusItem: (id: string) => void;
 }
 
 const Item: FC<ItemProps> = (props) => {
   const deleteItem = () => {
-    props.deleteItem(props.item.id);
+    props.onDeleteItem(props.item.id);
   }
   const changeStatusItem = () => {
-    props.changeStatusItem(props.item.id)
+    props.onChangeStatusItem(props.item.id)
   }
 
   return (

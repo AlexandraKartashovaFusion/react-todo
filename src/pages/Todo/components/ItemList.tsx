@@ -5,8 +5,8 @@ import CustomizedListItem from './ItemList.style';
 
 interface ItemListProps {
   items: IItem[];
-  deleteItem: (id: string) => void;
-  changeStatusItem: (id: string) => void;
+  onDeleteItem: (id: string) => void;
+  onChangeStatusItem: (id: string) => void;
 }
 
 const ItemList: FC<ItemListProps> = (props) => {
@@ -16,8 +16,8 @@ const ItemList: FC<ItemListProps> = (props) => {
         <Item
           key={item.id}
           item={item}
-          deleteItem={props.deleteItem}
-          changeStatusItem={props.changeStatusItem}
+          onDeleteItem={props.onDeleteItem}
+          onChangeStatusItem={props.onChangeStatusItem}
         />
       ))}
     </CustomizedListItem>
