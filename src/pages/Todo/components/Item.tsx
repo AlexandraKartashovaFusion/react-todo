@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Button from '@mui/material/Button';
 
 import CustomizedListItem from './Item.style';

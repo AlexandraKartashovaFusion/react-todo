@@ -1,6 +1,7 @@
-import React, { FC, useState } from 'react';
-import TextField from '@mui/material/TextField';
+import { FC, useState } from 'react';
 import Button from '@mui/material/Button';
+
+import TextField from '@mui/material/TextField';
 import CustomizedListItem from './AddItemForm.style';
 interface AddItemFormProps {
   onAddNewItem: (value: string) => void;
@@ -15,6 +16,7 @@ const AddItemForm: FC<AddItemFormProps> = (props) => {
     if (!inputValue) {
       return;
     }
+
     props.onAddNewItem(inputValue);
     setInputValue('')
   }

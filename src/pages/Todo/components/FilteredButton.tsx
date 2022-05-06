@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Button from '@mui/material/Button';
+
 import { FilterEnum } from '../../../common/common.enums';
 
 interface FilterButtonProps {

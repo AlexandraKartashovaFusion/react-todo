@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CustomizedDiv from './ActionButtons.style';
 import FilterButton from './FilteredButton'
 import { FilterEnum } from '../../../common/common.enums';
