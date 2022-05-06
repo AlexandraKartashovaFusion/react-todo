@@ -10,7 +10,6 @@ interface Buttons {
 
 interface ActionButtonsProps {
   filter: FilterEnum;
-  onChangeFilter: (filter: FilterEnum) => void;
 };
 
 const FILTER_BUTTONS: Buttons[] = [
@@ -35,7 +34,6 @@ const ActionButtons: FC<ActionButtonsProps> = (props) => {
         FILTER_BUTTONS.map((item) => (
           <FilterButton
             key={item.value}
-            onChange={props.onChangeFilter}
             value={item.value}
             currentValue={props.filter}
           >

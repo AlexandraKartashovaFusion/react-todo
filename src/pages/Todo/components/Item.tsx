@@ -1,24 +1,18 @@
 import { FC } from 'react';
 import Button from '@mui/material/Button';
+import { useDispatch } from 'react-redux';
 
 import CustomizedListItem from './Item.style';
 import { StatusesEnum } from '../../../common/common.enums';
 import { IItem } from '../../../common/interfaces';
-
+import * as actions from '../store/actionCreators';
 
 interface ItemProps {
   item: IItem;
-  onDeleteItem: (id: string) => void;
-  onChangeStatusItem: (id: string) => void;
 }
 
 const Item: FC<ItemProps> = (props) => {
-  const deleteItem = () => {
-    props.onDeleteItem(props.item.id);
-  }
-  const changeStatusItem = () => {
-    props.onChangeStatusItem(props.item.id)
-  }
+  const dispatch = useDispatch();
 
   return (
     <CustomizedListItem>
@@ -31,7 +25,7 @@ const Item: FC<ItemProps> = (props) => {
           variant="contained"
           size="small"
           color="inherit"
-          onClick={changeStatusItem}
+          onClick={() => dispatch(actions.changeItemStatus(props.item.id))}
         >
           {props.item.status === StatusesEnum.ACTIVE ? 'Done' : 'Active'}
         </Button>
@@ -41,7 +35,7 @@ const Item: FC<ItemProps> = (props) => {
           variant="contained"
           size="small"
           color="inherit"
-          onClick={deleteItem}
+          onClick={() => dispatch(actions.deleteItem(props.item.id))}
         >
           Delete
         </Button>

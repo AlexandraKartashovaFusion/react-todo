@@ -7,13 +7,12 @@ import AddItemForm from './components/AddItemForm';
 import ItemList from './components/ItemList';
 import CustomizedList from './Todo.style';
 import ActionButtons from './components/ActionButtons';
-import * as actions from './store/actionCreators';
 import { IState } from './store/todoReducer';
 
 const Todo: FC = () => {
   const dispatch = useDispatch();
-  const items: IItem[] = useSelector<IState>((state) => state.items) as IItem[];
-  const filter: FilterEnum = useSelector<IState>((state) => state.filter) as FilterEnum;
+  const items = useSelector<IState>((state) => state.items) as IItem[];
+  const filter = useSelector<IState>((state) => state.filter) as FilterEnum;
 
   const { filteredItems } = useMemo(() => {
     const filteredItems = items.filter((item) => {
@@ -31,14 +30,9 @@ const Todo: FC = () => {
 
   return (
     <CustomizedList>
-      <AddItemForm onAddNewItem={(data) => dispatch(actions.addItem(data))} />
-      <ActionButtons
-        filter={filter}
-        onChangeFilter={(data) => dispatch(actions.changeFilter(data))} />
-      <ItemList
-        items={filteredItems}
-        onDeleteItem={(data) => dispatch(actions.deleteItem(data))}
-        onChangeStatusItem={(data) => dispatch(actions.changeItemStatus(data))}
+      <AddItemForm />
+      <ActionButtons filter={filter}/>
+      <ItemList items={filteredItems}
       />
     </CustomizedList>
   );

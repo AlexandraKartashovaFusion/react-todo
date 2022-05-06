@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
 import Button from '@mui/material/Button';
+import { useDispatch } from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 import CustomizedListItem from './AddItemForm.style';
-interface AddItemFormProps {
-  onAddNewItem: (value: string) => void;
-}
+import { addItem } from '../store/actionCreators';
 
-const AddItemForm: FC<AddItemFormProps> = (props) => {
+const AddItemForm: FC = () => {
   const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (ev: { preventDefault: () => void; }) => {
     ev.preventDefault();
@@ -16,11 +16,9 @@ const AddItemForm: FC<AddItemFormProps> = (props) => {
     if (!inputValue) {
       return;
     }
-
-    props.onAddNewItem(inputValue);
+    dispatch(addItem(inputValue))
     setInputValue('')
   }
-
   return (
     <CustomizedListItem disablePadding>
       <form className="form" onSubmit={handleSubmit}>
