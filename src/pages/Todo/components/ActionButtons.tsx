@@ -8,10 +8,6 @@ interface Buttons {
   value: FilterEnum;
 }
 
-interface ActionButtonsProps {
-  filter: FilterEnum;
-};
-
 const FILTER_BUTTONS: Buttons[] = [
   {
     title: 'All',
@@ -27,7 +23,7 @@ const FILTER_BUTTONS: Buttons[] = [
   },
 ];
 
-const ActionButtons: FC<ActionButtonsProps> = (props) => {
+const ActionButtons: FC = (props) => {
   return (
     <CustomizedDiv>
       {
@@ -35,7 +31,6 @@ const ActionButtons: FC<ActionButtonsProps> = (props) => {
           <FilterButton
             key={item.value}
             value={item.value}
-            currentValue={props.filter}
           >
             {item.title}
           </FilterButton>

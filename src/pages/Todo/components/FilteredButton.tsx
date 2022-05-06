@@ -1,18 +1,20 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
 
 import { changeFilter } from '../store/actionCreators';
 import { FilterEnum } from '../../../common/common.enums';
+import { IState } from '../store/todoReducer';
 
 interface FilterButtonProps {
   children: React.ReactNode;
   value: FilterEnum;
-  currentValue: FilterEnum;
 }
 
 const FilterButton: FC<FilterButtonProps> = (props) => {
   const dispatch = useDispatch();
+  const filter = useSelector<IState>((state) => state.filter) as FilterEnum;
+
   return (
     <Button
       className="actions_button"
@@ -20,7 +22,7 @@ const FilterButton: FC<FilterButtonProps> = (props) => {
       size="large"
       color="inherit"
       onClick={() => dispatch(changeFilter(props.value))}
-      disabled={props.value === props.currentValue}
+      disabled={props.value === filter}
     >
       {props.children}
     </Button>
