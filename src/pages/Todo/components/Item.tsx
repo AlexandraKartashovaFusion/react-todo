@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import CustomizedListItem from './Item.style';
 import { StatusesEnum } from '../../../common/common.enums';
 import { IItem } from '../../../common/interfaces';
-import * as actions from '../store/actionCreators';
+import { deleteItem, changeItemStatus } from '../store/todoReducer';
 
 interface ItemProps {
   item: IItem;
@@ -25,7 +25,7 @@ const Item: FC<ItemProps> = (props) => {
           variant="contained"
           size="small"
           color="inherit"
-          onClick={() => dispatch(actions.changeItemStatus(props.item.id))}
+          onClick={() => dispatch(changeItemStatus(props.item.id))}
         >
           {props.item.status === StatusesEnum.ACTIVE ? 'Done' : 'Active'}
         </Button>
@@ -35,7 +35,7 @@ const Item: FC<ItemProps> = (props) => {
           variant="contained"
           size="small"
           color="inherit"
-          onClick={() => dispatch(actions.deleteItem(props.item.id))}
+          onClick={() => dispatch(deleteItem(props.item.id))}
         >
           Delete
         </Button>

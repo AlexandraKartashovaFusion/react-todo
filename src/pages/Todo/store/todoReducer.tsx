@@ -1,47 +1,39 @@
-import { ActionData, ItemActionsEnum } from './actionTypes';
+import { createSlice } from '@reduxjs/toolkit'
 import { nanoid } from 'nanoid';
+
 import { FilterEnum, StatusesEnum } from '../../../common/common.enums';
-import { IItem } from '../../../common/interfaces';
+import { IItem, IState } from '../../../common/interfaces';
 
 const SIZE = 8;
-
-export interface IState {
-  items: IItem[];
-  filter: FilterEnum;
-}
 
 const initialState: IState = {
   items: [],
   filter: FilterEnum.ALL,
 }
-
-const todoReducer = (state: IState = initialState, action: ActionData): IState => {
-  const { items, filter } = state;
-  switch (action.type) {
-    case ItemActionsEnum.ADD:
-      const newItem = {
+export const todoReducer = createSlice({
+  name: 'todo',
+  initialState,
+  reducers: {
+    addItem: (state: IState, {payload} ) => {
+      const newItem: IItem = {
         id: nanoid(SIZE),
-        value: action.data.value,
+        value: payload.value,
         status: StatusesEnum.ACTIVE,
       }
-      const newItems = [...items, newItem];
-      const sortedItems = getSortedItems(newItems);
+      const newItems = [...state.items, newItem];
 
-      return {
-        items: sortedItems,
-        filter,
-      };
-
-    case ItemActionsEnum.DELETE:
-      const returnedItems = items.filter((item) => item.id !== action.data.id);
-      return {
-        items: returnedItems,
-        filter,
-      };
-
-    case ItemActionsEnum.CHANGE_STATUS:
+      state.items = getSortedItems(newItems);
+    },
+    changeFilter: (state: IState, { payload }) => {
+      state.filter = payload;
+    },
+    deleteItem: (state: IState, { payload }) => {
+      const returnedItems = state.items.filter((item) => item.id !== payload);
+      state.items = returnedItems;
+    },
+    changeItemStatus: (state: IState, { payload }) => {
       const mappedItems = state.items.map((item) => {
-        if (item.id === action.data.id) {
+        if (item.id === payload) {
           const status = item.status === StatusesEnum.ACTIVE
             ? item.status = StatusesEnum.DONE
             : item.status = StatusesEnum.ACTIVE;
@@ -52,26 +44,15 @@ const todoReducer = (state: IState = initialState, action: ActionData): IState =
       });
 
       const sortedItemsAfterChangeStatus = getSortedItems(mappedItems);
-      return {
-        items: sortedItemsAfterChangeStatus,
-        filter,
-      };
-
-    case ItemActionsEnum.CHANGE_FILTER:
-      return {
-        items: state.items,
-        filter: action.data.filter,
-      };
-
-    default:
-      return state;
+      state.items = sortedItemsAfterChangeStatus;
+    },
   }
-};
+});
 
 const getSortedItems = (items: IItem[]) => {
   return items.sort((a, b) => a.value > b.value ? -1 : 1)
     .sort((a, b) => a.status === StatusesEnum.DONE ? 1 : -1);
 }
 
-export default todoReducer;
-
+export const { addItem, deleteItem, changeFilter, changeItemStatus } = todoReducer.actions
+export default todoReducer.reducer

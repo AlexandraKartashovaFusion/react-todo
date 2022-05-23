@@ -2,8 +2,7 @@ import { FC, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { FilterEnum } from '../../../common/common.enums';
 
-import { IItem } from '../../../common/interfaces';
-import { IState } from '../store/todoReducer';
+import { IItem, IState } from '../../../common/interfaces';
 import Item from './Item';
 import CustomizedListItem from './ItemList.style';
 

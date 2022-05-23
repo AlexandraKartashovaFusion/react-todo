@@ -1,10 +1,15 @@
 import { FC, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 import TextField from '@mui/material/TextField';
 import CustomizedListItem from './AddItemForm.style';
-import { addItem } from '../store/actionCreators';
+import { addItem } from '../store/todoReducer';
+import { StatusesEnum } from '../../../common/common.enums';
+import { IItem } from '../../../common/interfaces';
+
+const SIZE = 8;
 
 const AddItemForm: FC = () => {
   const [inputValue, setInputValue] = useState('');
@@ -12,11 +17,16 @@ const AddItemForm: FC = () => {
 
   const handleSubmit = (ev: { preventDefault: () => void; }) => {
     ev.preventDefault();
-
-    if (!inputValue) {
+    const value = inputValue.trim();
+    if (!value || value === '') {
       return;
     }
-    dispatch(addItem(inputValue))
+    const newItem: IItem = {
+      id: nanoid(SIZE),
+      value,
+      status: StatusesEnum.ACTIVE,
+    }
+    dispatch(addItem(newItem))
     setInputValue('')
   }
   return (

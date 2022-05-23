@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 
-import { changeFilter } from '../store/actionCreators';
 import { FilterEnum } from '../../../common/common.enums';
-import { IState } from '../store/todoReducer';
+import { changeFilter } from '../store/todoReducer';
+import { IState } from '../../../common/interfaces';
 
 interface FilterButtonProps {
   children: React.ReactNode;
