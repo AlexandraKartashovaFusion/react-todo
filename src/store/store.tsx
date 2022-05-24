@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import todoReducer from '../pages/Todo/store/todoReducer';
+import rootReducer from './rootReducer';
 
-const store = configureStore({ reducer: todoReducer });
+const store = configureStore({ reducer: rootReducer });
+
+export type AppDispatch = typeof store.dispatch
 export default store;

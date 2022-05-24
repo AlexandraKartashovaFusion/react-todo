@@ -13,7 +13,7 @@ interface FilterButtonProps {
 
 const FilterButton: FC<FilterButtonProps> = (props) => {
   const dispatch = useDispatch();
-  const filter = useSelector<IState>((state) => state.filter) as FilterEnum;
+  const filter = useSelector<IState>((state) => state.todoReducer.filter) as FilterEnum;
 
   return (
     <Button
