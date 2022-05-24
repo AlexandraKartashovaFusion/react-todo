@@ -8,11 +8,11 @@ import CustomizedListItem from './ItemList.style';
 
 
 const ItemList: FC = (props) => {
-  const items = useSelector<IState>((state) => state.items) as IItem[];
-  const filter = useSelector<IState>((state) => state.filter) as FilterEnum;
+  const items = useSelector<IState>((state) => state.todoReducer.items) as IItem[];
+  const filter = useSelector<IState>((state) => state.todoReducer.filter) as FilterEnum;
 
   const { filteredItems } = useMemo(() => {
-    const filteredItems = items.filter((item) => {
+    const filteredItems = items?.filter((item) => {
       if (filter === 'all') {
         return true;
       }

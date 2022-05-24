@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import { nanoid } from 'nanoid';
 
 import { FilterEnum, StatusesEnum } from '../../../common/common.enums';
-import { IItem, IState } from '../../../common/interfaces';
+import { IItem, ITodoState } from '../../../common/interfaces';
 
 const SIZE = 8;
 
-const initialState: IState = {
+const initialState: ITodoState = {
   items: [],
   filter: FilterEnum.ALL,
 }
@@ -14,7 +14,7 @@ export const todoReducer = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    addItem: (state: IState, {payload} ) => {
+    addItem: (state: ITodoState, {payload} ) => {
       const newItem: IItem = {
         id: nanoid(SIZE),
         value: payload.value,
@@ -24,14 +24,14 @@ export const todoReducer = createSlice({
 
       state.items = getSortedItems(newItems);
     },
-    changeFilter: (state: IState, { payload }) => {
+    changeFilter: (state: ITodoState, { payload }) => {
       state.filter = payload;
     },
-    deleteItem: (state: IState, { payload }) => {
+    deleteItem: (state: ITodoState, { payload }) => {
       const returnedItems = state.items.filter((item) => item.id !== payload);
       state.items = returnedItems;
     },
-    changeItemStatus: (state: IState, { payload }) => {
+    changeItemStatus: (state: ITodoState, { payload }) => {
       const mappedItems = state.items.map((item) => {
         if (item.id === payload) {
           const status = item.status === StatusesEnum.ACTIVE
@@ -54,5 +54,6 @@ const getSortedItems = (items: IItem[]) => {
     .sort((a, b) => a.status === StatusesEnum.DONE ? 1 : -1);
 }
 
-export const { addItem, deleteItem, changeFilter, changeItemStatus } = todoReducer.actions
-export default todoReducer.reducer
+export const { addItem, deleteItem, changeFilter, changeItemStatus } = todoReducer.actions;
+
+export default todoReducer.reducer;
