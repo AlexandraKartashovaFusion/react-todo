@@ -11,9 +11,6 @@ export const pokemonReducer = createSlice({
   name: 'pokemons',
   initialState,
   reducers: {
-    getAll: () => {
-
-    },
     setPokemons: (state: IPokemonState, { payload }) => {
       const newPokemons = payload.results.map((pokemon: IPokemon) => {
         const getId = pokemon.url.split('/');
@@ -27,9 +24,12 @@ export const pokemonReducer = createSlice({
       state.previous = payload.previous;
     },
     setPokemon: (state: IPokemonState, { payload }) => {
-
-      const img: string = payload?.sprites?.front_default ? payload?.sprites?.front_default :
-        payload?.sprites?.front_shiny ? payload?.sprites?.front_shiny : '';
+      let img: string = '';
+      if (payload?.sprites?.front_default) {
+        img = payload?.sprites?.front_default;
+      } else if (payload?.sprites?.front_shiny) {
+        img = payload?.sprites?.front_shiny;
+      }
 
       const activePokemon: IPokemon = {
         id: Number(payload?.id),
@@ -39,10 +39,7 @@ export const pokemonReducer = createSlice({
       }
       state.activePokemon = activePokemon;
     },
-    setActivePokemon: (state: IPokemonState, { payload }) => {
-      state.activePokemon = payload;
-    },
   }
 });
-export const { getAll, setPokemons, setPokemon, setActivePokemon } = pokemonReducer.actions;
+export const { setPokemons, setPokemon } = pokemonReducer.actions;
 export default pokemonReducer.reducer;

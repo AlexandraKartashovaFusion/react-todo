@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export default styled('div')`
+export default styled.div`
   padding-left: 10%;
   display: flex;
   flex-direction: column;

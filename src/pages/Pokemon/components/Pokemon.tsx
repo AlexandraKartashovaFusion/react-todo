@@ -24,7 +24,7 @@ const Pokemon: FC = () => {
     <CustomizedDiv>
       <button onClick={goBack}>Go Back</button>
       <div className="info">
-        <p>{(pokemon?.name)?.toUpperCase()}</p>
+        <p>{pokemon?.name?.toUpperCase()}</p>
         <img src={pokemon?.img} alt={pokemon?.img} />
       </div>
     </CustomizedDiv>

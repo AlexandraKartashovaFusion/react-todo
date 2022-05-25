@@ -9,10 +9,6 @@ export const fullStore = {
   pokemonReducer,
 };
 
-const combinedReducer = combineReducers(fullStore);
-
-const rootReducer = (state: any, action: any) => {
-  return combinedReducer(state, action);
-};
+const rootReducer = combineReducers(fullStore);
 
 export default rootReducer;

@@ -1,25 +1,32 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 
-import Layout from './common/components/Layout';
 import Cats from './pages/FactsAboutCats/FactsAboutCats';
 import Pokemon from './pages/Pokemon/components/Pokemon';
 import PokemonList from './pages/Pokemon/PokemonList';
 import Todo from './pages/Todo/Todo';
+import CustomizedHeader from './App.style';
+import {
+  ROUTE_FACTS,
+  ROUTE_POKEMONS,
+  ROUTE_POKEMONS_ID,
+  ROUTE_TODO,
+} from './common/routes.constants';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Layout />} >
-            <Route path='/facts' element={<Cats />} />
-            <Route path='/todo' element={<Todo />} />
-            <Route path='/pokemons' element={<PokemonList />} />
-            <Route path='pokemons/:id' element={<Pokemon />} />
-            {/* /pokemons/pokemons / charmeleon  */}
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <CustomizedHeader>
+        <NavLink to={ROUTE_FACTS}>Facts about cats</NavLink>
+        <NavLink to={ROUTE_TODO}>TODO</NavLink>
+        <NavLink to={ROUTE_POKEMONS}>Pokemons</NavLink>
+      </CustomizedHeader>
+
+      <Routes>
+        <Route path={ROUTE_FACTS} element={<Cats />} />
+        <Route path={ROUTE_TODO} element={<Todo />} />
+        <Route path={ROUTE_POKEMONS} element={<PokemonList />} />
+        <Route path={ROUTE_POKEMONS_ID} element={<Pokemon />} />
+      </Routes>
     </>
   );
 }
