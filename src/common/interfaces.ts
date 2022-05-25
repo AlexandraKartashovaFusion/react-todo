@@ -14,6 +14,7 @@ export interface IPokemon {
   name: string;
   id: number;
   url: string;
+  img: string;
 }
 
 export interface ITodoState {
@@ -27,6 +28,10 @@ export interface IFactsAboutCatsState {
 
 export interface IPokemonState {
   pokemons: IPokemon[];
+  count: number;
+  next: string;
+  previous: string;
+  activePokemon?: IPokemon;
 }
 
 export interface IState {

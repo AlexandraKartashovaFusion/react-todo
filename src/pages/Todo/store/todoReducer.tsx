@@ -2,9 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { nanoid } from 'nanoid';
 
 import { FilterEnum, StatusesEnum } from '../../../common/common.enums';
+import { SIZE } from '../../../common/constants';
 import { IItem, ITodoState } from '../../../common/interfaces';
-
-const SIZE = 8;
 
 const initialState: ITodoState = {
   items: [],

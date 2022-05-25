@@ -1,7 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IFact, IState } from '../../common/interfaces';
 import { AppDispatch } from '../../store/store';
+
+import { IFact, IState } from '../../common/interfaces';
 import { getFactsThunk } from './store/thunk';
 
 const Cats: FC = () => {
