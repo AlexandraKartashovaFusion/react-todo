@@ -1,20 +1,21 @@
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AppDispatch } from '../../../store/store';
 
-import { IPokemon, IState } from '../../../common/interfaces';
+
 import { getPokemonThunk } from '../store/thunks';
 import CustomizedDiv from './Pokemon.style';
-
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 const Pokemon: FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const pokemon = useSelector<IState>((state) => state.pokemonReducer?.activePokemon) as IPokemon;
-
+  const pokemon = useAppSelector((state) => state.pokemonReducer?.activePokemon);
   const goBack = () => navigate(-1);
+
+  if (!pokemon?.id || !pokemon?.name || !pokemon?.url) {
+    goBack();
+  }
 
   useEffect(() => {
     dispatch(getPokemonThunk(id));

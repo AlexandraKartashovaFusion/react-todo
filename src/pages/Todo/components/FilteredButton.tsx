@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 
 import { FilterEnum } from '../../../common/common.enums';
 import { changeFilter } from '../store/todoReducer';
-import { IState } from '../../../common/interfaces';
+import { useAppSelector } from '../../../hooks';
 
 interface FilterButtonProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface FilterButtonProps {
 
 const FilterButton: FC<FilterButtonProps> = (props) => {
   const dispatch = useDispatch();
-  const filter = useSelector<IState>((state) => state.todoReducer.filter) as FilterEnum;
+  const filter = useAppSelector((state) => state.todoReducer.filter);
 
   return (
     <Button

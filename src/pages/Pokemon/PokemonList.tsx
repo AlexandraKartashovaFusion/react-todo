@@ -1,18 +1,16 @@
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../store/store';
 import { NavLink } from 'react-router-dom';
 
-import { IPokemon, IState } from '../../common/interfaces';
 import { getPokemonsThunk } from './store/thunks';
 import { SIZE } from '../../common/constants';
 import { nanoid } from 'nanoid';
 import CustomizedDiv from './PokemonList.style';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 
 const PokemonList: FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const pokemons = useSelector<IState>((state) => state.pokemonReducer.pokemons) as IPokemon[];
+  const dispatch = useAppDispatch();
+  const pokemons = useAppSelector((state) => state.pokemonReducer.pokemons);
 
   useEffect(() => {
     dispatch(getPokemonsThunk());

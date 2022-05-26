@@ -1,13 +1,13 @@
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store/store';
 
-import { IFact, IState } from '../../common/interfaces';
 import { getFactsThunk } from './store/thunk';
+import { useAppSelector } from '../../hooks';
 
 const Cats: FC = () => {
   const dispatch = useDispatch <AppDispatch>();
-  const facts = useSelector<IState>((state) => state.factsAboutCatsReducer?.facts ) as IFact[];
+  const facts = useAppSelector((state) => state.factsAboutCatsReducer?.facts);
 
   useEffect(() => {
     dispatch(getFactsThunk());
