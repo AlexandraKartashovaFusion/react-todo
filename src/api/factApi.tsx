@@ -2,8 +2,12 @@
 import axios from 'axios';
 
 const PATH = 'https://cat-fact.herokuapp.com/facts';
+
+const instance = axios.create();
+instance.defaults.baseURL = PATH;
+
 export const getList = () => {
-  return axios.get(PATH);
+  return instance.get('');
 };
 
 export default {

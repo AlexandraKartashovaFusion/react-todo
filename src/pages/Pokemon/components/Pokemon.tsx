@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
 import { getPokemonThunk } from '../store/thunks';
 import CustomizedDiv from './Pokemon.style';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
@@ -13,13 +12,13 @@ const Pokemon: FC = () => {
   const { activePokemon } = useAppSelector((state) => state.pokemonReducer);
   const goBack = () => navigate(-1);
 
-  if (!activePokemon?.id || !activePokemon?.name || !activePokemon?.url) {
-    goBack();
-  }
-
   useEffect(() => {
     dispatch(getPokemonThunk(id));
   }, [dispatch, id]);
+
+  if (!activePokemon?.id || !activePokemon?.name || !activePokemon?.url) {
+    return null;
+  }
 
   return (
     <CustomizedDiv>

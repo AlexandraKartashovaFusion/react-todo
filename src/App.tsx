@@ -9,17 +9,15 @@ import {
 } from './common/routes.constants';
 
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
-      {/* Toastify */}
-      {/* <ToastContainer
-        autoClose={3000}
-        draggable
-        newestOnTop
-        closeButton={false}
-      /> */}
+      <ToastContainer
+        autoClose={2000}
+      />
+
       <CustomizedHeader>
         <NavLink to={ROUTE_FACTS}>Facts about cats</NavLink>
         <NavLink to={ROUTE_TODO}>TODO</NavLink>
@@ -27,7 +25,6 @@ function App() {
       </CustomizedHeader>
 
       <Router />
-      <ToastContainer />
     </>
   );
 }

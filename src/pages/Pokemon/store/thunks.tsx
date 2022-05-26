@@ -16,18 +16,11 @@ export const getPokemonsThunk = createAsyncThunk(
   },
 );
 
-export const getPokemonThunk = createAsyncThunk<
-  any,
-  string | undefined,
-  {
-    dispatch: AppDispatch
-    }
->(
+
+export const getPokemonThunk = createAsyncThunk<any, GettingData, ThunkDispatch>(
   'pokemons/getPokemon',
-  async (payload, { dispatch }) => {
-
+  async(payload, { dispatch }) => {
     try {
-
       if (!payload) {
         return;
       }
@@ -39,3 +32,9 @@ export const getPokemonThunk = createAsyncThunk<
     }
   },
 );
+
+type ThunkDispatch = {
+  dispatch: AppDispatch,
+};
+
+type GettingData = string | undefined;

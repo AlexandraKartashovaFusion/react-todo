@@ -22,11 +22,9 @@ const PokemonList: FC = () => {
         pokemons.map((pokemon: any) => {
           const url = `/pokemons/${pokemon.id}`;
           return (
-            <>
-              <li key={nanoid(SIZE)}>
-                <NavLink to={url}>{pokemon.name}</NavLink>
-              </li>
-            </>
+            <li key={nanoid(SIZE)}>
+              <NavLink to={url}>{pokemon.name}</NavLink>
+            </li>
           )
         }) : []
       }
