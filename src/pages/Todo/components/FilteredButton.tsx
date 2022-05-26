@@ -13,7 +13,7 @@ interface FilterButtonProps {
 
 const FilterButton: FC<FilterButtonProps> = (props) => {
   const dispatch = useDispatch();
-  const filter = useAppSelector((state) => state.todoReducer.filter);
+  const { filter } = useAppSelector((state) => state.todoReducer);
 
   return (
     <Button

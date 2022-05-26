@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 
 const PokemonList: FC = () => {
   const dispatch = useAppDispatch();
-  const pokemons = useAppSelector((state) => state.pokemonReducer.pokemons);
+  const { pokemons } = useAppSelector((state) => state.pokemonReducer);
 
   useEffect(() => {
     dispatch(getPokemonsThunk());

@@ -6,8 +6,8 @@ import CustomizedListItem from './ItemList.style';
 
 
 const ItemList: FC = (props) => {
-  const items = useAppSelector((state) => state.todoReducer.items);
-  const filter = useAppSelector((state) => state.todoReducer.filter);
+  const { items } = useAppSelector((state) => state.todoReducer);
+  const { filter } = useAppSelector((state) => state.todoReducer);
 
   const { filteredItems } = useMemo(() => {
     const filteredItems = items?.filter((item) => {

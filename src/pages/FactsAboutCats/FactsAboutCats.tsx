@@ -7,7 +7,7 @@ import { useAppSelector } from '../../hooks';
 
 const Cats: FC = () => {
   const dispatch = useDispatch <AppDispatch>();
-  const facts = useAppSelector((state) => state.factsAboutCatsReducer?.facts);
+  const { facts } = useAppSelector((state) => state.factsAboutCatsReducer);
 
   useEffect(() => {
     dispatch(getFactsThunk());

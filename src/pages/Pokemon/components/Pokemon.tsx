@@ -10,10 +10,10 @@ const Pokemon: FC = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const pokemon = useAppSelector((state) => state.pokemonReducer?.activePokemon);
+  const { activePokemon } = useAppSelector((state) => state.pokemonReducer);
   const goBack = () => navigate(-1);
 
-  if (!pokemon?.id || !pokemon?.name || !pokemon?.url) {
+  if (!activePokemon?.id || !activePokemon?.name || !activePokemon?.url) {
     goBack();
   }
 
@@ -25,8 +25,8 @@ const Pokemon: FC = () => {
     <CustomizedDiv>
       <button onClick={goBack}>Go Back</button>
       <div className="info">
-        <p>{pokemon?.name?.toUpperCase()}</p>
-        <img src={pokemon?.img} alt={pokemon?.img} />
+        <p>{activePokemon?.name?.toUpperCase()}</p>
+        <img src={activePokemon?.img} alt={activePokemon?.img} />
       </div>
     </CustomizedDiv>
   );
