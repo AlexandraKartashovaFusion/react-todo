@@ -6,9 +6,19 @@ export default styled.div`
   flex-direction: column;
   align-items: left;
 
+  .actions {
+    margin-top: 10px;
+    display: flex;
+  }
+
   li {
     list-style-type: none;
     margin-top: 10px;
+  }
+
+  button {
+    width: 100px;
+    margin-right: 10px;
   }
 `;
 

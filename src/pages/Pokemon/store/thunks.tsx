@@ -16,6 +16,18 @@ export const getPokemonsThunk = createAsyncThunk(
   },
 );
 
+export const getPokemonsWithPaginationThunk = createAsyncThunk<any, GetPath, ThunkDispatch>(
+  'pokemons/getPokemonsWithPaginationThunk',
+  async (payload, { dispatch }) => {
+    try {
+      const { data: pokemons } = await pokemonsApi.getPaginationList(payload);
+
+      dispatch(setPokemons(pokemons));
+    } catch (err) {
+      dispatch(setPokemons([]));
+    }
+  },
+);
 
 export const getPokemonThunk = createAsyncThunk<any, GettingData, ThunkDispatch>(
   'pokemons/getPokemon',
@@ -38,3 +50,5 @@ type ThunkDispatch = {
 };
 
 type GettingData = string | undefined;
+
+type GetPath = string;

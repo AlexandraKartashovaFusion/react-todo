@@ -25,6 +25,10 @@ export const getList = () => {
   return instance.get('');
 };
 
+export const getPaginationList = (path: string) => {
+  return axios.get(path);
+};
+
 export const getInfo = (id: string) => {
   return instance.get(`${id}`);
 }
@@ -32,4 +36,5 @@ export const getInfo = (id: string) => {
 export default {
   getList,
   getInfo,
+  getPaginationList,
 };

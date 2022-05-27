@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { getPokemonsThunk } from './store/thunks';
+import { getPokemonsThunk, getPokemonsWithPaginationThunk } from './store/thunks';
 import { SIZE } from '../../common/constants';
 import { nanoid } from 'nanoid';
 import CustomizedDiv from './PokemonList.style';
@@ -11,6 +11,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 const PokemonList: FC = () => {
   const dispatch = useAppDispatch();
   const { pokemons } = useAppSelector((state) => state.pokemonReducer);
+  const { next } = useAppSelector((state) => state.pokemonReducer);
+  const { previous } = useAppSelector((state) => state.pokemonReducer);
 
   useEffect(() => {
     dispatch(getPokemonsThunk());
@@ -28,6 +30,14 @@ const PokemonList: FC = () => {
           )
         }) : []
       }
+      <div className="actions">
+        <button
+          disabled={!previous}
+          onClick={() => dispatch(getPokemonsWithPaginationThunk(previous))}>
+          Back
+        </button>
+        {next ? <button onClick={() => dispatch(getPokemonsWithPaginationThunk(next))}>Next</button> : ''}
+      </div>
     </CustomizedDiv>
   );
 }
