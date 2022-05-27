@@ -1,5 +1,10 @@
 import { FilterEnum, StatusesEnum } from "./common.enums";
 
+export interface IPagination {
+  limit: number;
+  offset: number;
+}
+
 export interface IItem {
   id: string;
   status: StatusesEnum;

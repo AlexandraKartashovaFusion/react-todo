@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import pokemonsApi from '../../../api/pokemonsApi';
+import { IPagination } from '../../../common/interfaces';
 import { AppDispatch } from '../../../store/store';
 import { setPokemon, setPokemons } from './pokemonReducer';
 
-export const getPokemonsThunk = createAsyncThunk(
+export const getPokemonsThunk = createAsyncThunk<any, GettingData, ThunkDispatch>(
   'pokemons/getPokemonsThunk',
   async (payload, { dispatch }) => {
     try {
-      const { data: pokemons } = await pokemonsApi.getList();
+      const { data: pokemons } = await pokemonsApi.getList(payload);
 
       dispatch(setPokemons(pokemons));
     } catch (err) {
@@ -51,4 +52,4 @@ type ThunkDispatch = {
 
 type GettingData = string | undefined;
 
-type GetPath = string;
+type GetPath = IPagination;

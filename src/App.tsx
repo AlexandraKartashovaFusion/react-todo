@@ -8,8 +8,9 @@ import {
   ROUTE_TODO,
 } from './common/routes.constants';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FIRST_PAGE } from './common/constants';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <CustomizedHeader>
         <NavLink to={ROUTE_FACTS}>Facts about cats</NavLink>
         <NavLink to={ROUTE_TODO}>TODO</NavLink>
-        <NavLink to={ROUTE_POKEMONS}>Pokemons</NavLink>
+        <NavLink to={`${ROUTE_POKEMONS}/${FIRST_PAGE}`}>Pokemons</NavLink>
       </CustomizedHeader>
 
       <Router />
