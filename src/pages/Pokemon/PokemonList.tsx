@@ -36,7 +36,11 @@ const PokemonList: FC = () => {
           onClick={() => dispatch(getPokemonsWithPaginationThunk(previous))}>
           Back
         </button>
-        {next ? <button onClick={() => dispatch(getPokemonsWithPaginationThunk(next))}>Next</button> : ''}
+        <button
+          disabled={!next}
+          onClick={() => dispatch(getPokemonsWithPaginationThunk(next))}>
+          Next
+        </button>
       </div>
     </CustomizedDiv>
   );
