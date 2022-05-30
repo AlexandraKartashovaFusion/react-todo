@@ -4,7 +4,6 @@ import { useAppSelector } from '../../../hooks';
 import Item from './Item';
 import CustomizedListItem from './ItemList.style';
 
-
 const ItemList: FC = (props) => {
   const { items } = useAppSelector((state) => state.todoReducer);
   const { filter } = useAppSelector((state) => state.todoReducer);

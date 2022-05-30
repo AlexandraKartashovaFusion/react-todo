@@ -46,7 +46,7 @@ const AddItemForm: FC = () => {
           className="buttons"
           variant="contained"
           size="large"
-          color="inherit"
+          color='primary'
           type="submit"
         >
           Add

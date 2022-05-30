@@ -23,5 +23,4 @@ const Router = () => {
   );
 };
 
-
 export default memo(Router);
