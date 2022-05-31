@@ -11,11 +11,14 @@ export default styled(ListItem)`
   .form {
     display: flex;
     margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .text-field {
     color: white;
-    width: 30vw;
+    width: 50vw;
   }
 
   .buttons {
