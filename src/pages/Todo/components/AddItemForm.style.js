@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import ListItem from '@mui/material/ListItem';
 
 export default styled(ListItem)`
-  background-color: ${props => props.theme.palette.grey.A400};
-  border-radius: 10px;
+  background-color: ${({theme}) => theme.palette.grey.A400};
+  border-radius: ${({theme}) => theme.borderRadius.medium};
   height: 12vh;
   display: flex;
   justify-content: center;

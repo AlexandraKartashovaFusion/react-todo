@@ -2,16 +2,18 @@
 import styled from '@emotion/styled';
 
 export default styled.div`
-  background-color: #A1A18A;
-  border-radius: 5px;
-  margin-left: 25px;
-  margin-right: 25px;
-  height: 5vh;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 10px;
+  .container {
+    background-color: ${({theme}) => theme.colors.item};
+    border-radius: ${({theme}) => theme.borderRadius.small};
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+  }
 
   .buttons {
     height: 4vh;
@@ -25,6 +27,10 @@ export default styled.div`
 
   .text-bolt {
     font-weight: 700;
+  }
+
+  .done-item {
+    box-shadow: ${({ theme }) =>  theme.shadows.dark};
   }
 
   .actions {

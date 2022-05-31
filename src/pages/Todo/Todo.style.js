@@ -8,7 +8,7 @@ export default styled(List)`
   width: 70vw;
   margin-top: 5%;
   margin-left: 16%;
-  border-radius: 10px;
+  border-radius: ${({theme}) => theme.borderRadius.medium};
 
   .actions {
     display: flex;
